@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background-image: url("{{ url_for('static', filename='wallpaperflare.com_wallpaper (11).jpg') }}");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: transparent;
+            backdrop-filter: blur(20px);
+            padding: 25px 30px;
+            border-radius: 5px;
+        }
+        .container .title {
+            font-weight: 500;
+            font-size: 25px;
+            color: #fff;
+            position: relative;
+        }
+        .container .title::before {
+            content: '';
+            position: absolute;
+            height: 3px;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        }
+        .container form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .input-box {
+            margin: 20px 0 12px 0;
+            width: calc(100% / 2 - 20px);
+        }
+        .input-box .details {
+            color: #fff;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        .input-box input {
+            height: 45px;
+            width: 100%;
+            outline: none;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding-left: 15px;
+            font-size: 16px;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+        .input-box input:focus,
+        .input-box input:valid {
+            border-color: #9b59b6;
+        }
+        button {
+            height: 45px;
+            width: 100%;
+            outline: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 5px;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        }
+        button:hover {
+            background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+        }
+        .flash-messages {
+            color: red;
+            margin-bottom: 15px;
+        }
+        .flash-messages.success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Registration</div>
+    
+        <form action="/register" method="POST">
+            <div class="input-box">
+                <label for="username" class="details">User Name</label>
+                <input type="text" id="username" name="username" placeholder="User Name" required>
+            </div>
+            <div class="input-box">
+                <label for="email" class="details">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="input-box">
+                <label for="contact" class="details">Contact</label>
+                <input type="number" id="contact" name="contact" placeholder="Phone Number" required>
+            </div>
+            <div class="input-box">
+                <label for="password" class="details">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('forms').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form from submitting
+
+    // Get form values
+    const username = document.getElementById('username').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const contact = document.getElementById('contact').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    // Check if all fields are filled
+    if (username && email && contact && password) {
+        // If all fields are filled, show the success prompt
+        alert('Registration successful!');
+    } else {
+        // If any field is empty, show the alert
+        alert('Please fill all the fields');
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Website - services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<style>
+    *{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+body{
+    font-family: sans-serif;
+    background-image: url("{{ url_for('static',filename='wallpaperflare.com_wallpaper (11).jpg') }}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.container{
+    min-height: 100vh;
+    width: 100%;
+}
+.service-wrapper{
+    padding: 5% 8%;
+}
+.service{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1{
+    color: #fff;
+    font-size: 5rem;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: transparent;
+    letter-spacing: 4px;
+    background-color: rgb(4, 52, 83);
+    background: linear-gradient(8deg,rgb(8,52,83) 0%,rgba(0,230,17,1) 41%,rgba(41,17,45,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+}
+h1:after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 10%;
+    height: 5px;
+    width: 80%;
+    border-radius: 8px;
+    background-color: rgba(225,225,225,0.05);
+}
+
+h1 span{
+    position: absolute;
+    top: 100%;
+    left: 10%;
+    height: 5px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: #72e2ae;
+    animation: anim 5s linear infinite;
+}
+
+@keyframes anim {
+    95%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        left: 88%;
+    }
+}
+.cards{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 30px;
+    margin-top: 80px;
+}
+.card{
+    height: 300px;
+    width: 400px;
+    background-color: #1c2335;
+    padding: 3% 8%;
+    border: 0.2px solid rgba(114,226,174,0.2);
+    border-radius: 8px;
+    transition: .6s;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+.card:after{
+    content: "";
+    position: absolute;
+    top: 150%;
+    left: -200px;
+    width: 120%;
+    transform: rotate(50deg);
+    background-color: #fff;
+    height: 18px;
+    filter: blur(30px);
+    opacity: 0.5;
+    transition: 1s;
+}
+.card:hover:after{
+    width: 225%;
+    top: -100%;
+}
+.card i{
+    color: #72e2ae;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 2.8rem;
+}
+.card h2{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.card p{
+    text-align: center;
+    width: 100%;
+    margin: 12px 0;
+color: rgba(225,225,225,0.6);
+}
+.card:hover{
+    background-color: transparent;
+    transform: translateY(-8px);
+    border-color: green;
+
+}
+.card:hover i{
+    color: green;
+}
+@media screen and (max-width:1200px) {
+    .cards{
+        grid-template-columns: repeat(2,1fr);
+    }
+
+}
+@media screen and (max-width:1200px) {
+    .cards{
+        grid-template-columns: repeat(2,1fr);
+    }
+    h1{
+        font-size: 3.5rem;
+    }
+}
+footer{
+    background:  #1c2335;
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+}
+.social-link{
+    text-align: center;
+    padding-bottom: 5px;
+}
+.social-link a{
+    font-size: 40px;
+    color: grey;
+}
+.social-link a:hover{
+    background-color: antiquewhite;
+    border-radius: 10px;
+}
+.foot ul{
+    list-style: none;
+    text-align: center;
+    padding-bottom: 20px;
+}
+.foot ul li{
+    display: inline-block;
+    padding: 0px 15px;
+}
+.foot ul li a{
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 5px;
+    color: grey;
+    
+}
+.foot ul li a:hover{
+    background-color: #fff;
+    color: black;
+
+}
+.foot span{
+    display: block;
+    letter-spacing: 2px;
+    color: #4e658a;
+    font-weight: 500;
+    font-size: 18px;
+}
+.foot span a{
+    color: #1cc2e7;
+}
+.foot span a:hover{
+    color: #0ea5ea;
+}
+</style>
+<body>
+    <div class="container">
+        <div class="service-wrapper">
+            <div class="service">
+                <h1>OUR SERVICES <span></span></h1>
+                <div class="cards">
+                    <div class="card">
+                        <i class="fa-brands fa-chromecast"></i>
+                        <h2>Business Stratagy</h2> 
+                        <p>Business stratagy is an organizational master plan. This plan is what a management of a company 
+                        developes and implements to achive their stratagy goals.Essentialy, a business plan
+                        is a long-term sketch of the desired strategic destination for a company.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <h2>website Development</h2> 
+                        <p>Web developement is the building and maintenance of websites. it's the work that
+                        happens behind the scenes to make a website look great, work fast and perform well
+                        with a seamless user experiance. Web developers, do this by using a variety of coding.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-user-group"></i>
+                        <h2>Marketing And Reporting</h2> 
+                        <p>Marketing analystic is the practice of using data to evaluate the effectiveness
+                        and success of marketing activities. Marketing analytics allow you to gather deeper
+                        consumer insights, optimise your marketing objectives, and get a better return on
+                        investment. Marketing analytics benefits both marketers and reporters.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-desktop"></i>
+                        <h2>Mobile Development</h2> 
+                        <p>Mobile developement refers to the building of apps, but also the building of
+                        website perfectly suited for small devices like tablets and mobile phones.
+                        Responsive design is what makes websites fit to mobile device screens flawlessly,
+                        meaning users aren't slowed down by basic issues like formatting.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-camera"></i>
+                        <h2>Graphic Design</h2> 
+                        <p>Graphic web design is part of is part of graphic design that mainly focuses on
+                        website and software application designing. It involves propper combination of
+                        computer programming, graphic UI UX designing services & techniques.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-gear"></i>
+                        <h2>Other</h2> 
+                        <p>Other websites means Websites owned, operated, or run by third parties.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<footer>
+    <div class="foot">
+   <div class="social-link">
+    <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://en-gb.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F"><i class="fa-brands fa-facebook"></i></a>
+    <a href="https://www.linkedin.com/login"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+   </div>
+   <ul>
+    <li><a href="/main">Home</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/about">About Us</a></li>
+    <li><a href="/contact">Contact</a></li>
+</ul>
+   <span>&copy; 2024 Created by <a href="https://www.squarespace.com/" target="_blank"
+   title="squqrespace">squarespace.com</a></span> 
+</div>
+</footer>
+
+</html>

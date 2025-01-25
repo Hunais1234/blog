@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url("{{ url_for('static', filename='wallpaperflare.com_wallpaper (11).jpg') }}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .wrapper {
+            width: 420px;
+            background: transparent;
+            color: #fff;
+            padding: 30px 40px;
+            border-radius: 30px;
+            border: 2px solid rgba(225, 225, 225, .2);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        }
+        .wrapper h1 {
+            font-size: 36px;
+            text-align: center;
+        }
+        .wrapper .input-box {
+            width: 100%;
+            height: 50px;
+            margin: 30px 0;
+            position: relative;
+        }
+        .input-box input {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            border: 2px solid rgba(225, 225, 225, .2);
+            border-radius: 40px;
+            font-size: 16px;
+            color: #fff;
+            padding: 20px 45px 20px 20px;
+        }
+        .input-box input::placeholder {
+            color: #fff;
+        }
+        .input-box i {
+            position: absolute;
+            right: 20px;
+            top: 28px;
+            transform: translateY(-60%);
+            font-size: 20px;
+            color: #fff;
+        }
+        .input-box i:hover {
+            color: blue;
+        }
+        .wrapper .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14.5px;
+            margin: -15px 0 15px;
+        }
+        .remember-forgot label input {
+            accent-color: #fff;
+            margin-right: 3px;
+        }
+        .remember-forgot a {
+            text-decoration: none;
+            color: #fff;
+        }
+        .remember-forgot a:hover {
+            text-decoration: underline;
+        }
+        .wrapper button {
+            width: 100%;
+            height: 45px;
+            background: #71b7e6;
+            border: none;
+            outline: none;
+            border-radius: 40px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+        }
+        .wrapper .register-link {
+            font-size: 14.5px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .register-link p a {
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .register-link p a:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
+        .flash-messages {
+            color: red;
+            margin-bottom: 15px;
+        }
+        .flash-messages.success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        
+        <form action="/login" method="POST">
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="text" id="username" name="username" placeholder="Username" required>
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox" id="remember" name="remember">Remember Me</label>
+                <a href="/forget">Forgot password?</a>
+            </div>
+            <button type="submit">Login</button>
+            <div class="register-link">
+                <p>Don't have an account? <a href="/register">Sign up</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('forms').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form from submitting
+
+    // Get form values
+    const name = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const remember = document.getElementById('remember').value.trim();
+
+    // Check if all fields are filled
+    if (name && password && remember) {
+        // If all fields are filled, show the success prompt
+        alert('Login successful!');
+    } else {
+        // If any field is empty, show the alert
+        alert('Please fill all the fields');
+    }
+});
+</script>
+</body>
+</html>

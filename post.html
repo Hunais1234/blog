@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>posts</title>
+</head>
+<style>
+     *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image:url("{{ url_for('static',filename='wallpaperflare.com_wallpaper (11).jpg') }}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'noto sans',sans-serif;
+    scroll-behavior: smooth;
+    transition: 0.3 all;
+}
+body::before,
+body::after{
+    width: 500px;
+    content: '';
+    z-index: 1;
+    position: absolute;
+}
+.container1{
+    max-width: 1400px;
+    margin: auto;
+}
+.container{
+    position: relative;
+    max-width: 1200px;
+    margin: auto;
+}
+a{
+    text-decoration: none;
+}
+.flex{
+    display: flex;
+    align-items: center;
+}
+    /* big title */
+
+.bigtitle{
+    margin: 60px auto;
+}
+.bigtitle h2{
+    font-size: 45px;
+}
+.textcolor{
+    font-size: 36px;
+    background: linear-gradient(to top, #0ea5ea 30%, #0bd1d1 70%) 50%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.bigtitle p{
+    color: #708ab0;
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+/* tegsec start*/
+
+.tegsec{
+    gap: 10px; 
+    padding: 5px 0;
+}
+.tegsec a{
+    flex: 0 0 auto;
+    width: 14.6%;
+    transition: all 0.25s cubic-bezier(.02, .01, .47, 1);
+    border: 1px solid #e9eef5;
+    background-color: #e8edf5;
+    color: #6e81a0;
+    padding: 19px;
+    position: relative;
+    display: flex;
+    border-radius: 16px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.tegsec a img{
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+}
+.tegsec a:hover{
+    background-color: #fff;
+    transform: translateY(-5px);
+}
+
+/* recentpostsec start */
+
+.recentpostsec{
+    position: relative;
+    width: 100%;
+    margin-top: 30px;
+    align-items: flex-start;
+}
+.recentposts{
+    width: 100%;
+}
+.posts{
+    margin-top: 30px;
+}
+.post{
+    align-items: self-start;
+    transition: 0.3s all;
+    margin: 40px 0;
+}
+.post img{
+    width: 270px;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.postdetails{
+    padding: 5px 30px;
+}
+.postlabel{
+    transition: 0.2s all;
+    display: inline-block;
+}
+.postlabel a{
+    background-color: #e9eef5;
+    color: #7f92b0;
+    border-radius: 50px;
+    padding: 6px 15px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.3s linear;
+}
+.postlabel a:hover{
+    background-color: #0ea5ea;
+    color: #fff;
+}
+.postlabel:hover{
+    transform: translateY(-5px);
+}
+.postdetails h2{
+    color: #0bd1d1;
+    margin: 20px 0;
+}
+.postdetails p{
+    color: #708ab0;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.postdetails h3{
+    color: #0bd1d1;
+    margin: 20px 0;
+}
+.postdetails h6{
+    color: #708ab0;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.posttimeteg{
+    margin: 20px 0;
+    justify-content: space-between;
+}
+.posttimeteg h5{
+    margin-right: 5px;
+    color: #94a9c9;
+    font-weight: 500;
+}
+.posttimeteg h5:hover{
+    color: #0ea5ea;
+}
+
+/* postslider */
+
+.postslider{
+    width: 45%;
+    height: auto;
+    margin-top: 210px;
+}
+.popularposts{
+    width: 100%;
+    background-color: #e8edf5;
+    border: 1px solid #c2d4ee;
+    border-radius: 16px;
+    padding: 25px 25px 0;
+    margin-bottom: 30px;
+}
+.poptitle h3{
+    position: relative;
+    font-size: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+    background: linear-gradient(82.19deg, #0ea5ea 5.2%, #0bd1d1 100.36%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.poptitle h3::before{
+    content: '';
+    height: 3px;
+    width: 96px;
+    background-color: #0ea5ea;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.popupost{
+    align-items: flex-start;
+    gap: 10px;
+    margin: 20px 0;
+}
+.popupost img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.popupostde{
+    border-bottom: 1px solid #99999971;
+}
+.popupostde:last-child .popupostde{
+    border: none;
+}
+.popupostde h4{
+    margin-bottom: 14px;
+    color: #344161;
+    transition: 0.3s linear;
+}
+.popupostde h4:hover{
+    color: #0ea5ea;
+}
+.poputime{
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.poputime h5{
+    color: #708ab0;
+    font-weight: 400;
+}
+.poputime span{
+    margin-right: 5px;
+}
+
+/* Comment start */
+
+.comment{
+    border-bottom: 1px solid #17131329;
+    margin: 20px 0;
+}
+.comment p{
+    font-size: 14px;
+    color: #708ab0;
+    margin-bottom: 18px;
+    text-align: left;
+}
+.authorcomment img{
+    width: 35px;
+    height: 35px;
+}
+.authorcomment{
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.authorcomment h5{
+    font-size: 14px;
+    font-weight: 500;
+    color: #4e658a;
+}
+.authorcomment span{
+    font-size: 12px;
+    color: #6e81a0;
+}
+.comment:last-child{
+    border: none;
+}
+.showmorepost{
+    width: 100%;
+    justify-content: center;
+    margin: 20px 0;
+}
+.showmorepost a{
+    border-radius: 80px;
+    padding: 18px 30px;
+    background: linear-gradient(90deg, #0ea5ea, #0bd1d1 51%, #0ea5ea) var(--x, 0) /200%;
+    color: #fff;
+    transition: background 0.4s ease-in-out;
+}
+.showmorepost a:hover{
+    --x: 100%;
+}
+.showmorepost a i{
+    margin-left: 5px;
+}
+
+</style>
+<body>
+    <main id="main">
+        <section class="recentpostsec container flex">
+        <div class="recentposts">
+            <div class="bigtitle">
+                <h2 class="textcolor">Posts</h2>
+                <p>A blog post is any article, news piece, or guide that's published.</p>
+            </div>
+            <div class="posts">
+                <!-- Travel Post -->
+                <div class="post flex" id="travel-post">
+                    <a href="" id="travel-post">
+                        <img id="main-image-img" src="{{ url_for('static', filename='beautiful-vertical-shot-taj-mahal-building-agra-india-cloudy-sky.jpg') }}" alt="Main Image">
+                    </a>
+                    <div class="postdetails">
+                        <div class="postlabel">
+                            <a href="#">Travel</a>
+                        </div>
+                        <a href="#">
+                            <h2 id="main-title" >Photo of Taj Mahal - Free Architecture Image on Unsplash</h2>
+                        </a>
+                        <p id="main-description" >The Taj Mahal is located on the right bank of the Yamuna River in a vast Mughal garden that encompasses nearly 17 hectares, in the Agra district of Uttar Pradesh.</p>
+                        <div class="posttimeteg flex">
+                            <div class="flex">
+                                <h5><span>#</span>Travel</h5>
+                                <h5><span>#</span>Taj Mahal</h5>
+                            </div>
+                            <div class="tegtime">
+                                <h5>
+                                    <i class="fa-regular fa-clock"></i>
+                                    <span>5</span> mins read
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Nature Post -->
+                <div class="post flex" id="narure-post">
+                    <a href="">
+                        <img id="nature-image" src="{{ url_for('static', filename='pikaso_embed.png') }}" alt="Nature Image">
+                    </a>
+                    <div class="postdetails">
+                        <div class="postlabel">
+                            <a href="#">Nature</a>
+                        </div>
+                        <a href="#">
+                            <h2 id="nature-title">10 Easy Ways to be Environmentally Conscious at Home</h2>
+                        </a>
+                        <p id="nature-description">Take small but impactful steps towards environmental stewardship
+                        and sustainability within the comfort of your own home, contributing to a greener planet.</p>
+                        <div class="posttimeteg flex">
+                            <div class="flex">
+                                <h5><span>#</span>Nature</h5>
+                            </div>
+                            <div class="tegtime">
+                                <h5>
+                                    <i class="fa-regular fa-clock"></i>
+                                    <span>5</span> mins read
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lifestyle Post -->
+                <div class="post flex">
+                    <a href="">
+                        <img id="lifestyle-image" src="{{ url_for('static', filename='full-shot-woman-laying-couch.jpg') }}" alt="Lifestyle Image">
+                    </a>
+                    <div class="postdetails">
+                        <div class="postlabel">
+                            <a href="#">Lifestyle</a>
+                        </div>
+                        <a href="#">
+                            <h2>Most Common Lifestyle Diseases Working Professionals May Be At Risk Of</h2>
+                        </a>
+                        <p>A healthy lifestyle is a way of life adopted by an individual, a group, or a society. The term "lifestyle" was first coined by Alfred Adler, who identified several factors affecting the quality of life led by different individuals.</p>
+                        <div class="posttimeteg flex">
+                            <div class="flex">
+                                <h5><span>#</span>Lifestyle</h5>
+                            </div>
+                            <div class="tegtime">
+                                <h5>
+                                    <i class="fa-regular fa-clock"></i>
+                                    <span>5</span> mins read
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Space Post -->
+                <div class="post flex">
+                    <a href="">
+                        <img id="space-image" src="{{ url_for('static', filename='digital-art-galaxy.jpg') }}" alt="Space Image">
+                    </a>
+                    <div class="postdetails">
+                        <div class="postlabel">
+                            <a href="#">Space</a>
+                        </div>
+                        <a href="#">
+                            <h2>105 Fascinating Universe Facts That Will Blow Your Mind</h2>
+                        </a>
+                        <p>It's always fun to learn new things about the universe because it's so mysterious yet we keep discovering more. These fascinating universe facts will make you realize how we're all just a speck in the grand scheme of things.</p>
+                        <div class="posttimeteg flex">
+                            <div class="flex">
+                                <h5><span>#</span>Space</h5>
+                            </div>
+                            <div class="tegtime">
+                                <h5>
+                                    <i class="fa-regular fa-clock"></i>
+                                    <span>5</span> mins read
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="postslider">
+            <div class="popularposts">
+                <div class="poptitle">
+                    <h3>Popular posts</h3>
+                </div>
+                <div class="populposts">
+                    <div class="popupost flex">
+                        <img src="{{ url_for('static',filename='office-worker_3377976 (1).png') }}" alt="">
+                       <div class="popupostde">
+                           <a href="#">
+                               <h4>Helpful Tips for working from home as a freelancer</h4>
+                            </a>
+                            <div class="poputime flex">
+                                <h5><span>5</span>mins read</h5>
+                                <p>-</p>
+                                <h5>03 sep 2023</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="popupost flex">
+                        <img src="{{ url_for('static',filename='hand.jpeg') }}" alt="">
+                       <div class="popupostde">
+                           <a href="#">
+                               <h4>Creating a new business is an exciting and scary proposition.</h4>
+                            </a>
+                            <div class="poputime flex">
+                                <h5><span>5</span>mins read</h5>
+                                <p>-</p>
+                                <h5>03 sep 2023</h5>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="popupost flex">
+                        <img src="{{ url_for('static',filename='happy.png') }}" alt="">
+                       <div class="popupostde">
+                           <a href="#">
+                               <h4>The best ones to use for handprint painting are *washable tempera paints.</h4>
+                            </a>
+                            <div class="poputime flex">
+                                <h5><span>5</span>mins read</h5>
+                                <p>-</p>
+                                <h5>03 sep 2023</h5>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="popupost flex">
+                        <img src="{{ url_for('static',filename='museam.png') }}" alt="">
+                       <div class="popupostde">
+                           <a href="#">
+                               <h4>Look for museums with solid collection of artifacts instead of just multimedia presentations.</h4>
+                            </a>
+                            <div class="poputime flex">
+                                <h5><span>5</span>mins read</h5>
+                                <p>-</p>
+                                <h5>03 sep 2023</h5>
+                            </div>
+                        </div>
+                    </div>     
+                </div>
+            </div>
+            <div class="popularposts">
+                <div class="poptitle">
+                    <h3>Last Comments</h3>
+                </div>
+                <div class="comment">
+                    <p><span>"</span>Adventure awaits, and I hope it brings you all the joy and fulfillment you seek.
+                    Safe travels! May your journey be filled with laughter, love, and the beauty of discovery.</p>
+                    <div class="authorcomment flex">
+                        <img src="{{ url_for('static',filename='man.png') }}" alt="">
+                        <div class="authortimename">
+                            <h5>Adam</h5>
+                            <span>03 sep 2023</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment">
+                    <p><span>"</span>Traveling with Nature in a vintage ride ignites the heart, mind, and soul. It is
+                    a bridge from the past to the present. Stories echo. Oneness breathes. Magic happens. You become fully alive.</p>
+                    <div class="authorcomment flex">
+                        <img src="{{ url_for('static',filename='bussiness-man.png') }}" alt="">
+                        <div class="authortimename">
+                            <h5>Mike</h5>
+                            <span>03 Nov 2023</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment">
+                    <p><span>"</span>When I orbited the Earth in a spaceship, I saw for the first time how beautiful
+                    our planet is. Mankind, let us preserve and increase this beauty, and not destroy it!</p>
+                    <div class="authorcomment flex">
+                        <img src="{{ url_for('static',filename='man (1).png') }}" alt="">
+                        <div class="authortimename">
+                            <h5>David</h5>
+                            <span>03 Dec 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+        <div class="showmorepost container flex">
+            <a href="/blog">Show More Posts<i class="fa-solid fa-arrow-right"></i></a>
+        </div>  
+    </main>
+     
+    <script>
+     document.addEventListener('DOMContentLoaded', () => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const imgSrc = queryParams.get('img');
+    const title = queryParams.get('title');
+    const description = queryParams.get('description');
+
+    if (imgSrc) {
+        const mainImage = document.getElementById('main-image-img');
+        mainImage.src = imgSrc;
+
+        const mainTitle = document.getElementById('main-title');
+        if (title) mainTitle.textContent = title;
+
+        const mainDescription = document.getElementById('main-description');
+        if (description) mainDescription.textContent = description;
+    }
+});
+
+    
+
+
+    
+</script>  
+</body>
+</html>

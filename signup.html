@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up form</title><link rel="stylesheet" href="C:\Users\DELL\OneDrive\Desktop\New folder\static\signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<style>
+    body{
+    margin: 0;
+    padding: 0;
+    background-image: url("{{ url_for('static',filename='wallpaperflare.com_wallpaper (11).jpg') }}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.sign-up-form{
+    width: 300px;
+    height: 430px;
+    box-shadow: 0 0 3px 0rgba(0,0,0,0.3);
+    background: transparent;
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 20px;
+    margin: 5% auto 0;
+    text-align: center;
+}
+.sign-up-form h1{
+    color: #1c8adb;
+    margin-bottom: 10px;
+}
+.sign-up-form i{
+    margin-top: 10px;
+    font-size: 40px;
+}
+.input-box{
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 80%;
+    border: 1px solid #999;
+    outline: none;
+}
+button{
+    color: #fff;
+    width: 50%;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 15px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #1c8adb;
+}
+a{
+    text-decoration: none;
+    color: blue;
+}
+a:hover{
+    text-decoration: none;
+    color: black;
+}
+</style>
+<body>
+    <div class="sign-up-form">
+        <i class="fa-solid fa-user"></i>
+        <h1>Sign Up</h1>
+        <form id="forms">
+            <input type="text" class="input-box" id="username" name="name" placeholder="user name" required>
+            <input type="email" class="input-box" id="email" name="email" placeholder="email" required>
+            <input type="password" class="input-box" id="password" name="password" placeholder="password" required>
+            <input type="password" class="input-box" id="confirmpassword" name="password" placeholder="confirm password" required>
+            <button type="submit">Sign in</button>   
+            <p>Do you have an account ? <a href="/login">Login</a></p>
+        </form>
+    </div>
+    <script>
+        document.getElementById('forms').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form from submitting
+
+    // Get form values
+    const username = document.getElementById('username').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const confirmpassword = document.getElementById('confirmpassword').value.trim();
+
+    // Check if all fields are filled
+    if (username && email && password && confirmpassword) {
+        // If all fields are filled, show the success prompt
+        alert('Signup successful!');
+    } else {
+        // If any field is empty, show the alert
+        alert('Please fill all the fields');
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+</head>
+<style>
+    html{
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url("{{ url_for('static',filename='wallpaperflare.com_wallpaper (11).jpg') }}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: monospace;
+}
+.container{
+    border: #1778f2;
+    background-color: #fff;
+    background: transparent;
+    backdrop-filter: blur(30px);
+    width: 350px;
+    padding: 32px 24px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #212121;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+.container button{
+    color: #fff;
+    width: 50%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.container .title{
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+.container .form{
+    display: flex;
+    flex-direction: column;
+}
+.container .form-group{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.container .form-group label{
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+}
+.container .form-group input{
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-family: inherit;
+    border: 1px solid #ccc;
+}
+.container .form-group input::placeholder{
+    opacity: 1;
+}
+.container .form-group input:focus{
+    outline: none;
+    border-color: #1778f2;
+}
+.container .form-submit-btn {
+    
+    background-color: black;
+}
+.container a{
+    text-decoration: none;
+    color:#ccc;
+}
+.container a:hover{
+    text-decoration: none;
+    color: #fff;
+}
+.container .link{
+    color: #1778f2;
+    text-decoration: none;
+}
+.container .signup-link{
+    align-self: center;
+    color: #fff;
+    font-weight: 500;
+}
+.container .signup-link .link{
+    font-weight: 400;
+    color: blue;
+}
+.container .link:hover{
+    text-decoration: underline;
+    color: #fff;
+}
+</style>
+<body>
+    <div class="container">
+        <div class="title">
+            Forgot Password
+        </div>
+        <form action="/forget" method="POST" class="form">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="email" required />
+            </div>
+            <div class="form-group">
+                <label for="email">Contact</label>
+                <input type="text" id="contact" name="contact" placeholder="phone number" required />
+            </div>
+            <div class="form-group">
+                <label for="email">Passsword</label>
+                <input type="password" id="password" name="password" placeholder="new password" required />
+            </div>
+            <button class="form-submit-btn" type="submit">Reset</button>
+        </form>
+        <p class="signup-link">
+            Don't have an account?
+            <a href="/register" class="signup-link link"> Sign In now</a>
+        </p>
+    </div>
+</body>
+</html>

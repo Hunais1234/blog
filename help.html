@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog website - Help center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<style>
+    :root{
+    --primary-color:#25292e;
+    --secondary-color: #f3f5f7;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+}
+button{
+    padding: 10px 15px;
+    width: 150px;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-family: inherit;
+    transition: background-color 0.4s;
+}
+button:hover{
+    background-color: transparent;
+    cursor: pointer;
+    color: black;
+}
+body{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-image: url("{{ url_for('static',filename='wallpaperflare.com_wallpaper (11).jpg') }}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.title{
+    text-align: center;
+    padding: 50px 0;
+    color: #fff;
+}
+.title h1{
+    padding: 30px;
+}
+.title input{
+    padding: 8px;
+    width: 300px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-family: inherit;
+}
+.title input::placeholder{
+    font-family: inherit;
+}
+.title a{
+    margin-left: -30px;
+    font-size: 18px;
+    color: #25292e;
+}
+.title a:hover{
+    color: blue;
+}
+.container{
+    background-color: #fff;
+    padding: 50px;
+    max-width: 900px;
+    margin: 0 auto 50px;
+    border-radius: 5px;
+}
+.container h3{
+    text-align: center;
+    padding-bottom: 20px;
+}
+.container .articles{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.container .articles div{
+    margin: 0 5px 30px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 5px;
+    padding: 20px;
+}
+.container .articles div h4{
+    font-weight: 300;
+}
+.container .foot{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.container .foot div{
+    padding: 20px;
+    margin: 0 20px 30px;
+}
+.container .foot h5{
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #25292e;
+    margin-bottom: 10px;
+}
+.container .foot div ul li{
+    margin: 10px 0;
+}
+.container .foot div ul li a{
+    color: var(--primary-color);
+    font-size: 13px;
+}
+.container .foot div ul li a:hover{
+    border-bottom: 2px dotted var(--primary-color);
+}
+.container .more-info{
+    text-align: center;
+}
+.container .more-info h2{
+    margin-bottom: 20px;
+}
+@media (max-width:900px){
+    .container{
+        margin: 0 30px;
+    }
+}
+@media (max-width:500px){
+    .title h1{
+        font-size: 24px;
+    }
+    .container .articles, .container .foot{
+        display: grid;
+        grid-template-columns: 1fr;
+        place-items: center;
+    }
+    .container .foot{
+        text-align: center;
+    }
+    .container .more-info h2{
+        font-size: 20px;
+    }
+}
+footer .foot{
+    background: #1c2335;
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+}
+.social-link{
+    text-align: center;
+    
+    
+    padding-bottom: 5px;
+}
+.social-link a{
+    font-size: 40px;
+    color: grey;
+}
+.social-link a:hover{
+    background-color: antiquewhite;
+    border-radius: 10px;
+}
+.social-link i:hover{
+    transition: 1s ease;
+    transform: rotate(360deg);
+}
+footer .foot ul{
+    list-style: none;
+    font-size: 20px;
+    
+}
+footer .foot ul li{
+    display: inline-block;
+    
+}
+footer .foot ul li a{
+    text-decoration: none;
+    padding: 5px;
+    color: grey;
+}
+footer .foot ul li a:hover{
+    background-color: #fff;
+    border-radius: 10px;
+
+}
+.foot span{
+    display: block;
+    letter-spacing: 2px;
+    color: #4e658a;
+    font-weight: 500;
+    font-size: 18px;
+}
+.foot span a{
+    color: #1cc2e7;
+}
+.foot span a:hover{
+    color: #0ea5ea;
+}
+</style>
+<body>
+    <div class="title">
+        <h1>What Can We Help You With ?</h1>
+        <form action="#" id="home">
+            <input type="search" id="abc" placeholder="Find anything">
+            <datalist id="searchlist">
+                <option value="blog">
+                <option value="about">
+                <option value="service">
+                <option value="home">
+            </datalist>
+            <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+        </form>
+    </div>
+    <div class="container">
+        <h3>Top Questions</h3>
+        <div class="articles">
+            <div>
+                <h4>About Actions</h4>
+            </div>
+            <div>
+                <h4>Managing Packages</h4>
+            </div>
+            <div>
+                <h4>Authentication</h4>
+            </div>
+            <div>
+                <h4>Notifications</h4>
+            </div>
+        </div>
+        <footer class="foot">
+            <div>
+                <h5>Documentation</h5>
+                <ul>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Enterprice Server</a></li>
+                    <li><a href="#">Desktop</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5>Community</h5>
+                <ul>
+                    <li><a href="#">Education</a></li>
+                    <li><a href="#">Atom</a></li>
+                    <li><a href="#">Forum</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5>News</h5>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Change Blog</a></li>
+                    <li><a href="#">Status</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5>Learning</h5>
+                <ul>
+                    <li><a href="#">Lab</a></li>
+                    <li><a href="#">Guides</a></li>
+                    <li><a href="#">Resources</a></li>
+                </ul>
+            </div>
+        </footer>
+        <div class="more-info">
+            <h2>Can't Find What You're Looking For ?</h2>
+            <a href="/contact"><button>Contact Us</button></a>
+        </div>
+    </div>
+</body>
+<footer>
+    <div class="foot">
+        <div class="social-link">
+            <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://en-gb.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/login"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <ul>
+            <li><a href="/main">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+        </ul>
+        <span>&copy; 2024 Created by <a href="https://www.squarespace.com/" target="_blank"
+            title="squqrespace">squarespace.com</a></span>
+    </div>
+</footer>
+<script>
+    document.getElementById('home').addEventListener('search', function(event) {
+    event.preventDefault(); 
+
+    var query = document.getElementById('abc').value.trim().toLowerCase();
+
+    var pageMappings = {
+        'blog': "/blog",
+        'about': "/about",
+        'service':"/service",
+        'home':"/main",
+    };
+
+    var url = pageMappings[query] || 'not-found.html';
+
+    window.location.href = url;
+});
+</script>
+</html>

@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url("{{ url_for('static',filename='wallpaperflare.com_wallpaper (11).jpg') }}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'noto sans',sans-serif;
+    scroll-behavior: smooth;
+    transition: 0.3 all;
+}
+body::before,
+body::after{
+    width: 500px;
+    content: '';
+    z-index: 1;
+    position: absolute;
+}
+.container1{
+    max-width: 1400px;
+    margin: auto;
+}
+.container{
+    position: relative;
+    max-width: 1200px;
+    margin: auto;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+.flex{
+    display: flex;
+    align-items: center;
+}
+header{
+    background-color: darkslategray;
+    position: sticky;
+    top: 0;
+    padding: 10px;
+    z-index: 9999;
+    transition: 0.3s linear;
+}
+header nav{
+    position: relative;
+    justify-content: space-between;
+}
+.logo{
+    gap: 10px;
+}
+.logoimg {
+    width: 75px;
+    height: 75px;
+}
+.logoimg img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+}
+.navlist ul{
+    gap: 40px;
+    font-family: sans-serif;
+}
+.navlist ul li a{
+    font-size: 16px;
+    color: #94a9c9;
+}
+.navlist ul li a:hover{
+    color: #1cc2e7;
+}
+.navlist ul li .liactive{
+    color: #1cc2e7;
+    font-weight: 600;
+}
+.navlist ul li i{
+    font-size: 15px;
+    margin-left: 6px;
+}
+.sub-menu{
+    display: none;
+    top: 38%;
+    position: relative;
+    background-color: grey;
+}
+.sub-menu ul{
+    position: absolute;
+}
+.navlist ul li:hover .sub-menu{
+    display: block;
+    position: absolute;
+    background-color: rgb(0, 45, 117);
+    margin-top: 12px;
+    margin-left: -8px;
+}
+.navlist ul li:hover .sub-menu ul{
+    display: block;
+    margin: 6px;
+}
+.navlist ul li:hover .sub-menu ul li{
+    border-bottom: 1px #fff;
+    background: transparent;
+    transition: 0.4 ease;
+    text-align: left;
+    border-radius: 0px;
+}
+.searchdarksub{
+    gap: 20px;
+}
+.searchbar i{
+    font-size: 18px;
+    color: #555;
+    margin-left: -18px;
+    transition: all .2s ease;
+}
+.searchbar i:hover{
+    color: #1cc2e7;
+}
+.searchbar input{
+    width: 200px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border:  1px solid #555;
+    font-size: 18px;
+}
+.searchdarksub button{
+    padding: 12px 18px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    perspective: 30rem;
+    border-radius: 6px;
+}
+.searchdarksub button::before{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 6px;
+    background: linear-gradient(320deg, #0ea5ea, #0bd1d1 51%,
+    #0ea5ea) var(--x, 0)/200%;
+    z-index: -1;
+    transition: background 3s;
+}
+.searchdarksub button:hover{
+    animation: rotate 1s;
+    transition: all 0.5s;
+} 
+@keyframes rotate{
+    0%{
+       transform: rotateY(180deg);
+    }
+    100%{
+        transform: rotateY(360deg);
+    }
+}
+.searchdarksub button a{
+    color: #fff;
+}
+
+/* main */
+
+.biosec{
+    position: relative;
+    justify-content: space-between;
+    margin-top: 100px;
+    width: 100%;
+    height: auto;
+}
+.bio{
+    margin-top: 5px;
+}
+.bio h1{
+    font-size: 70px;
+    margin: 20px 0;
+    color: #0ea5ea;
+}
+.bio p{
+    width: 65%;
+    color: #7f92b0;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 15px 0;
+}
+.emailsub{
+    width: 30%;
+    background: linear-gradient(#e9eef5, #e9eef5) padding-box, linear-gradient(90deg, #e9eef5, #e9eef5) border-box;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background-color: #e9eef5;
+    padding: 10px 10px 10px 20px;
+    margin: 40px 0;
+}
+.emailsub form{
+    width: 100%;
+}
+.emailsub form input{
+    font-family: 'noto sans', sans-serif;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: transparent;
+}
+.emailsub form button{
+    padding: 10px 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    background: transparent;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    perspective: 30rem;
+    border-radius: 6px;
+}
+.emailsub form button::before{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 6px;
+    background: linear-gradient(320deg, #0ea5ea, #0bd1d1 51%, #0ea5ea) var(--x,0)/200%;
+    z-index: -1;
+}
+
+/* hot topics */ 
+
+.hottopicsec{
+    position: relative;
+    align-items: self-start;
+    justify-content: space-between;
+    height: 290px;
+    border-radius: 25px;
+    box-shadow: inset 10px 10px 10px black, inset -10px -10px 10px #555;
+    backdrop-filter: blur(60px);
+    padding: 24px;
+}
+.hottopics{
+    width: 40%;
+}
+.hottopics h3{
+    text-decoration: underline;
+    color: #344161;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.hottopics p{
+    font-size: 14px;
+    color: #708ab0;
+    margin: 20px 0;
+    width: 80%;
+}
+.hotcards{
+    position: relative;
+    height: 100%;
+    gap: 20px;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+.hcard{
+    position: relative;
+    max-width: 200px;
+    min-width: 200px;
+    height: 100%;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 2;
+}
+.hcard img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.hcard .hdetails{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    background: repeat-x 0 100%;
+}
+.hdetail{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 15px;
+}
+.hdetail h4{
+    text-transform: uppercase;
+    color: blue;
+    font-weight: 600;
+}
+.hdetail p{
+    font-size: 13px;
+    color: #344161;
+    margin: 5px 0;
+}
+
+/* big title */
+
+.bigtitle{
+    margin: 60px auto;
+}
+.bigtitle h2{
+    font-size: 45px;
+}
+.textcolor{
+    font-size: 36px;
+    background: linear-gradient(to top, #0ea5ea 30%, #0bd1d1 70%) 50%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.bigtitle p{
+    color: #708ab0;
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+/* tegsec start*/
+
+.tegsec{
+    gap: 10px; 
+    padding: 5px 0;
+}
+.tegsec a{
+    flex: 0 0 auto;
+    width: 14.6%;
+    transition: all 0.25s cubic-bezier(.02, .01, .47, 1);
+    border: 1px solid #e9eef5;
+    background-color: #e8edf5;
+    color: #6e81a0;
+    padding: 19px;
+    position: relative;
+    display: flex;
+    border-radius: 16px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.tegsec a img{
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+}
+.tegsec a:hover{
+    background-color: #fff;
+    transform: translateY(-5px);
+}
+
+/* recentpostsec start */
+
+.recentpostsec{
+    position: relative;
+    width: 100%;
+    margin-top: 30px;
+    align-items: flex-start;
+}
+.recentposts{
+    width: 100%;
+}
+.posts{
+    margin-top: 30px;
+}
+.post{
+    align-items: self-start;
+    transition: 0.3s all;
+    margin: 40px 0;
+}
+.post img{
+    width: 270px;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.postdetails{
+    padding: 5px 30px;
+}
+.postlabel{
+    transition: 0.2s all;
+    display: inline-block;
+}
+.postlabel a{
+    background-color: #e9eef5;
+    color: #7f92b0;
+    border-radius: 50px;
+    padding: 6px 15px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.3s linear;
+}
+.postlabel a:hover{
+    background-color: #0ea5ea;
+    color: #fff;
+}
+.postlabel:hover{
+    transform: translateY(-5px);
+}
+.postdetails h2{
+    color: #0bd1d1;
+    margin: 20px 0;
+}
+.postdetails p{
+    color: #708ab0;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.posttimeteg{
+    margin: 20px 0;
+    justify-content: space-between;
+}
+.posttimeteg h5{
+    margin-right: 5px;
+    color: #94a9c9;
+    font-weight: 500;
+}
+.posttimeteg h5:hover{
+    color: #0ea5ea;
+}
+
+/* postslider */
+
+.postslider{
+    width: 45%;
+    height: auto;
+    margin-top: 60px;
+}
+.popularposts{
+    width: 100%;
+    background-color: #e8edf5;
+    border: 1px solid #c2d4ee;
+    border-radius: 16px;
+    padding: 25px 25px 0;
+    margin-bottom: 30px;
+}
+.poptitle h3{
+    position: relative;
+    font-size: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+    background: linear-gradient(82.19deg, #0ea5ea 5.2%, #0bd1d1 100.36%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.poptitle h3::before{
+    content: '';
+    height: 3px;
+    width: 96px;
+    background-color: #0ea5ea;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.popupost{
+    align-items: flex-start;
+    gap: 10px;
+    margin: 20px 0;
+}
+.popupost img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.popupostde{
+    border-bottom: 1px solid #99999971;
+}
+.popupostde:last-child .popupostde{
+    border: none;
+}
+.popupostde h4{
+    margin-bottom: 14px;
+    color: #344161;
+    transition: 0.3s linear;
+}
+.popupostde h4:hover{
+    color: #0ea5ea;
+}
+.poputime{
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.poputime h5{
+    color: #708ab0;
+    font-weight: 400;
+}
+.poputime span{
+    margin-right: 5px;
+}
+
+/* Comment start */
+
+.comment{
+    border-bottom: 1px solid #17131329;
+    margin: 20px 0;
+}
+.comment p{
+    font-size: 14px;
+    color: #708ab0;
+    margin-bottom: 18px;
+    text-align: left;
+}
+.authorcomment img{
+    width: 35px;
+    height: 35px;
+}
+.authorcomment{
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.authorcomment h5{
+    font-size: 14px;
+    font-weight: 500;
+    color: #4e658a;
+}
+.authorcomment span{
+    font-size: 12px;
+    color: #6e81a0;
+}
+.comment:last-child{
+    border: none;
+}
+.showmorepost{
+    width: 100%;
+    justify-content: center;
+    margin: 20px 0;
+}
+.showmorepost a{
+    border-radius: 80px;
+    padding: 18px 30px;
+    background: linear-gradient(90deg, #0ea5ea, #0bd1d1 51%, #0ea5ea) var(--x, 0) /200%;
+    color: #fff;
+    transition: background 0.4s ease-in-out;
+}
+.showmorepost a:hover{
+    --x: 100%;
+}
+.showmorepost a i{
+    margin-left: 5px;
+}
+
+/* footer start */
+
+footer{
+    height: auto;
+    padding: 40px 40px 0px 40px;
+    box-shadow: inset 8px 8px 8px #555, inset -8px -8px 8px #7f92b0;
+    background-color: #cbc3d1;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+.footersec{
+    align-items: flex-start;
+    border-bottom: 1px solid #344161;
+}
+.logofooter{
+    padding: 30px 0;
+    padding-right: 30px;
+}
+.logof{
+    margin-bottom: 20px;
+}
+.logof a img{
+    width: 12%;
+    height: 12%;
+    border-radius: 50px;
+}
+.logof a h1{
+    font-size: 30px;
+    color: #555;
+    font-weight: 800;
+    margin-left: 5px;
+}
+.logofooter p{
+    width: 450px;
+    color: #07425e;
+    font-size: 14px;
+}
+.createdby h4{
+    padding: 10px;
+    color: #4e658a;
+    font-weight: 500;
+    font-size: 20px;
+}
+.createdby h4 a{
+    color: #07425e;
+}
+.createdby h4 a:hover{
+    color: #0ea5ea;
+}
+.social{
+    gap: 20px;
+}
+.socialicon{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.socialicon i{
+    color: #07425e;
+    font-size: 60px;   
+}
+.socialicon i:hover{
+    animation: rotate 1s;
+    transition: all 0.5s;
+} 
+@keyframes rotate{
+    0%{
+       transform: rotateY(180deg);
+    }
+    100%{
+        transform: rotateY(360deg);
+    }
+}
+</style>
+<body>
+    
+    <header id="header">
+        <nav class="container1 flex">
+            <div class="logo flex">
+                <div class="logoimg">
+                    <img src="{{ url_for('static',filename='ss.png') }}" alt="">
+                </div>
+            </div>
+            <div class="navlist flex">
+                <ul class="flex">
+                    <li><a href="/" class="liactive">Home</a></li>
+                    <li><a href="/about">About us</a></li>
+                    <li><a href="/blog">Blogs</a></li>
+                    <li><a href="/post">Posts</a></li>
+                    <li><a href="#">Resources<i class="fa-solid fa-sort-down"></i></a>
+                        <div class="sub-menu">
+                            <ul>
+                                <li><a href="/service">Services</a></li>
+                                <li><a href="/help">Helpcenter</a></li>
+                             </ul>
+                         </div></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+            <form id="home" class="searchdarksub flex">
+                <div class="searchbar">
+                    <input type="search" id="abc" name="search" class="form-control" placeholder="search...">
+                    <datalist id="searchlist">
+                        <option value="blog">
+                        <option value="about">
+                        <option value="service">
+                        <option value="help">
+                        <option value="contact">
+                    </datalist>
+                    
+                </form>
+                <button><a href="/login">Login</a></button>
+                <button><a href="/register">Get Started</a></button>
+            </div>
+        </nav>
+    </header>
+    
+    <main id="main">
+        <section class="biosec container flex">
+            <div class="bio">
+                <h1>Daily Blogs</h1>
+                <p>Welcome to my blog, online journal where an individual, group, corporation presents a record
+                 of activities, thoughts, or beliefs. Some blogs operate mainly as news filters, collecting various
+                 online sources and adding short comments and internet links.   
+                </p>
+                <div class="emailsub">
+                    <form action="/email" method="POST" class="flex">
+                        <input type="email" name="email" id="email" placeholder="Type your email address">
+                        <button type="submit">Subcribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section class="hottopicsec container flex">
+            <div class="hottopics">
+                <h3>Hot Topics</h3>
+                <p>Don't miss out on the latest news about travel tips, hotel review, food guide...</p>
+            </div>
+            <div class="hotcards flex">
+                <div class="hcard">
+                    <a href="/blog#travel" id="navigateLink">
+                        <img src="{{ url_for('static', filename='travel img.jpg') }}" alt="">
+                        <div class="hdetails">
+                            <div class="hdetail">
+                                <h4>Travel</h4>
+                                <p>6 Articles</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="hcard">
+                    <a href="/blog#nature" id="navigate">
+                        <img src="{{ url_for('static', filename='nature img.jpg') }}" alt="">
+                        <div class="hdetails">
+                            <div class="hdetail">
+                                <h4>Nature</h4>
+                                <p>6 Articles</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="hcard">
+                    <a href="/blog#lifestyle" id="navigates">
+                        <img src="{{ url_for('static', filename='lifestyle img.jpg') }}" alt="">
+                        <div class="hdetails">
+                            <div class="hdetail">
+                                <h4>Lifestyle</h4>
+                                <p>6 Articles</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="hcard">
+                    <a href="/blog#space" id="navi">
+                        <img src="{{ url_for('static', filename='space img.jpg') }}" alt="">
+                        <div class="hdetails">
+                            <div class="hdetail">
+                                <h4>Space</h4>
+                                <p>6 Articles</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <div class="bigtitle container">
+            <h2 class="textcolor">Popular Tegs</h2>
+            <p>Most searched keywords</p>
+        </div> 
+        <div class="tegsec container flex">
+            <a href=""><img src="{{ url_for('static', filename='planet-earth (1).png') }}" alt="">Nature</a>
+            <a href=""><img src="{{ url_for('static', filename='saturn (1).png') }}" alt="">space</a>
+            <a href=""><img src="{{ url_for('static', filename='apple (1).png') }}" alt="">Lifestyle</a>
+            <a href=""><img src="{{ url_for('static', filename='flight (1).png') }}" alt="">Travel</a>
+        </div>    
+      
+    </main>
+    
+    <footer class="container">
+        <section class="footersec flex">
+            <div class="logofooter">
+                <div class="logof">
+                    <a href="#" class="flex">
+                        <img src="{{ url_for('static',filename='ss.png') }}" alt="">
+                        <h1>SQUARE SPACE</h1>
+                    </a>
+                </div>
+                <p>Overall, Squarespace aims to simplify the process of creating and managing
+                websites, empowering individuals and businesses to establish a professional online
+                presence without the need for technical expertise or extensive resources.</p>
+                <h4>Address</h4>
+                <p>175/b245, Indoor street,</p>
+                <p>India, Tamilnadu,</p>
+                <p>Pincode - 638475.</p>
+            </div>
+
+            <div class="createdby container">
+                <div class="social flex">
+                    <div class="socialicon">
+                        <a href="https://en-gb.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F"><i class="fa-brands fa-square-facebook"></i></a>        
+                    </div>
+                    <div class="socialicon">
+                        <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>  
+                    </div>
+                    <div class="socialicon">
+                        <a href="https://www.google.com/"><i class="fa-brands fa-google"></i></a>
+                    </div>
+                    <div class="socialicon">
+                        <a href="https://www.linkedin.com/login"><i class="fa-brands fa-linkedin"></i></i></a>        
+                    </div>
+                    <div class="socialicon">
+                        <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <h4>&copy; 2024 Created by <a href="https://www.squarespace.com/" target="_blank"
+                title="squqrespace">squarespace.com</a></h4>
+            </div>
+        </section>
+    </footer>
+
+    <script>
+        document.getElementById('forms').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form from submitting
+
+    // Get form values
+    const email = document.getElementById('email').value.trim();
+
+    // Check if all fields are filled
+    if (email) {
+        // If all fields are filled, show the success prompt
+        alert('Subscribed successful!');
+    } else {
+        // If any field is empty, show the alert
+        alert('Please fill all the fields');
+    }
+}); 
+document.getElementById('form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form from submitting
+
+    // Get form values
+    const username = document.getElementById('username').value.trim();
+    const email = document.getElementById('emails').value.trim();
+
+    // Check if all fields are filled
+    if (username && email) {
+        // If all fields are filled, show the success prompt
+        alert('Subscribed successful!');
+    } else {
+        // If any field is empty, show the alert
+        alert('Please fill all the fields');
+    }
+});
+document.getElementById('home').addEventListener('search', function(event) {
+    event.preventDefault(); 
+
+    var query = document.getElementById('abc').value.trim().toLowerCase();
+
+    var pageMappings = {
+        'blog': "/blog",
+        'about': "/about",
+        'service':"/service",
+        'help':"/help",
+        'contact':"/contact",
+    };
+
+    var url = pageMappings[query] || 'not-found.html';
+
+    window.location.href = url;
+});
+
+    document.getElementById('navigateLink').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Navigate to the target page
+            window.location.href = '/blog#travel';  
+        });
+
+    document.getElementById('navigate').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Navigate to the target page
+            window.location.href = '/blog#nature';  
+        }); 
+
+    document.getElementById('navigates').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Navigate to the target page
+            window.location.href = '/blog#lifestyle';  
+        });   
+        
+    document.getElementById('navi').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Navigate to the target page
+            window.location.href = '/blog#space';  
+        });
+        
+
+</script>
+</body>
+</html>

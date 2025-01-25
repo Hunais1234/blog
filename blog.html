@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog website - Blogs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<style>
+    :root{
+    --dark: #3c393d;
+    --exDark: #2b2b2b;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-image:url("{{ url_for('static',filename='wallpaperflare.com_wallpaper (11).jpg') }}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    line-height: 1.4;
+    color: #fff;
+}
+img{
+    width: 100%;
+    display: block;
+}
+.container{
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 1.2rem;
+} 
+.flex{
+    display: flex;
+    align-items: center;
+}
+.title{
+    text-align: center;
+    padding: 1rem 0;
+}
+.title h2{
+    font-size: 5.4rem;
+    color: #1cc2e7;
+}
+.title p{
+    text-transform: uppercase;
+    padding: 0.6rem 0;
+    font-size: 2.0rem;
+    color:  #1cc2e7;
+}
+.container .titles{
+    font-weight: 500;
+    font-size: 40px;
+    color: #0bd1d1;
+    position: relative;
+}
+.container .titles::before{
+    content: '';
+    position: absolute;
+    height: 3px;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    background: linear-gradient(135deg, #71b7e6,  #0bd1d1);
+}
+.blog-content{
+    margin: 2rem 0;
+    border-radius: 25px;
+    box-shadow: inset 10px 10px 10px black, inset -10px -10px 10px #555;
+    backdrop-filter: blur(60px);
+    padding: 30px 30px 0px 30px;
+}
+.blog-img{
+    position: relative;
+}
+.blog-img img{
+    height: 270px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.blog-img span{
+    position: absolute;
+    bottom: 2px;
+    right: 5px;
+    color: #fff;
+    font-size: 1.4rem;
+    padding: 0.3rem 0.6rem;
+}
+.blog-img i:hover{
+    color: #1f5ab9;
+}
+.blog-text{
+    margin: 2.2rem 0;
+    padding: 0 1rem;
+}
+.blog-text span{
+    font-family: 300;
+    display: block;
+    padding-bottom: 0.5rem;
+    color: #7f92b0;
+}
+.blog-text h2{
+    color: #1cc2e7;
+    padding: 1rem 0;
+    font-size: 1.65rem;
+    font-weight: 500;
+}
+.blog-text p{
+    color:  #7f92b0;
+    font-weight: 300;
+    font-size: 1.1rem;
+    opacity: 0.9;
+    padding-bottom: 1.2rem;
+}
+.blog-text a{
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: var(--dark);
+    display: inline-block;
+    background: var(--dark);
+    border-radius: 20px;
+    color: #fff;
+    padding: 0.55rem 1.2rem;
+    transition: all 0.5s ease;
+}
+.blog-text a:hover{
+    background: grey;
+    color: #1c2335;
+}
+.img{
+    position: relative;
+}
+.img img{
+    height: 270px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.blog-img span{
+    position: absolute;
+    bottom: 2px;
+    right: 5px;
+    color: #fff;
+    font-size: 1.4rem;
+    padding: 0.3rem 0.6rem;
+}
+.img i:hover{
+    color: #1f5ab9;
+}
+.text{
+    margin: 2.2rem 0;
+    padding: 0 1rem;
+}
+.text span{
+    font-family: 300;
+    display: block;
+    padding-bottom: 0.5rem;
+    color: #7f92b0;
+}
+.text h3{
+    color: #1cc2e7;
+    padding: 1rem 0;
+    font-size: 1.65rem;
+    font-weight: 500;
+}
+.text h6{
+    color:  #7f92b0;
+    font-weight: 300;
+    font-size: 1.1rem;
+    opacity: 0.9;
+    padding-bottom: 1.2rem;
+}
+.text a{
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: var(--dark);
+    display: inline-block;
+    background: var(--dark);
+    border-radius: 20px;
+    color: #fff;
+    padding: 0.55rem 1.2rem;
+    transition: all 0.5s ease;
+}
+.text a:hover{
+    background: grey;
+    color: #1c2335;
+}
+@media screen and (min-width:768px){
+    .container{
+        
+        align-items: center;
+        justify-content: space-between;
+    }
+    .design-content{
+        display: grid;
+        grid-template-columns: repeat(2 ,1fr);
+        gap: 2rem;
+    }
+    .design-items{
+        margin: 0;
+    }
+    .blog-content{
+        display: grid;
+        grid-template-columns: repeat(2 ,1fr);
+        gap: 2rem;
+    }
+}
+@media screen and (min-width:992px){
+    .blog-content{
+        grid-template-columns: repeat(3 ,1fr);
+    }
+}
+@media screen and (min-width:1200px){
+    .design-content{
+        grid-template-columns: repeat(3 ,1fr);
+    }
+}
+
+/* footer */
+
+footer{
+    margin: 2rem 0;
+    border-radius: 25px;
+    box-shadow: inset 10px 10px 10px black, inset -10px -10px 10px #555;
+    backdrop-filter: blur(60px);
+    padding: 30px 30px 0px 30px;
+}
+.themeauthor{
+    justify-content: space-between;
+    padding: 30px 0;
+}
+.createdby{
+    padding: 10px;
+    margin-left: -25px;
+}
+.createdby h4{
+    color: #4e658a;
+    font-weight: 500;
+    font-size: 20px;
+}
+.createdby h4 a{
+    color: #1cc2e7;
+}
+.createdby h4 a:hover{
+    color: #0ea5ea;
+}
+.social{
+    gap: 20px;
+}
+.socialicon{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.socialicon i{
+    color: #0ea5ea;
+    font-size: 40px;   
+}
+.socialicon i:hover{
+    animation: rotate 1s;
+    transition: all 0.5s;
+} 
+@keyframes rotate{
+    0%{
+       transform: rotateY(180deg);
+    }
+    100%{
+        transform: rotateY(360deg);
+    }
+}
+</style>
+<body>
+    <section class="blog" id="blog">
+        <div class="container">
+            <div class="title">
+                <h2>OUR BLOGS</h2>
+                <p> Recent post</p>
+            </div>
+
+             <!-- Travel blog -->
+            <div id="travel">
+                <div class="titles">Travel</div>
+                <div class="blog-content">
+                
+                <div class="blog-items">
+                    <div class="blog-img">
+                           <img src="{{ url_for('static',filename='premium_photo-1694475226507-568fd86cadfe.avif') }}" alt="" class="image-clickable">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 20 January 2024</span>
+                        <h2>Photo of Eiffel Tower, photo - free Architecture Image on Unsplash.</h2>
+                        <p>It allows us to see and to be seen, with spectacular ascent, a unique panoramic
+                        view of paris, and a glittering beacon in the skies of the capital. The Tower also
+                        represents the magic of light. Its lighting, its sparkling lights, and its beacon
+                        shine and inspire dreams every evening.</p>     
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='photo-1639756152470-23cc9e7598b3.avif') }}" alt="" class="image-clickable">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 12 February 2024</span>
+                        <h2>It contains art masterpieces, plus many other paintings.</h2>
+                        <p>There's nothing quite like the Louvre. It's the largest museum in the world, and
+                        the glass pyramid marking the entrance has become a global symbol for priceless art.
+                        Millions of tourists flock to the museum every year, many seeking a glimpse of the
+                        Mona Lisa. It is National Art museum in paris.</p>
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='premium_photo-1706464965798-336f113c677a.avif') }}" alt="" class="image-clickable">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 05 Agust 2024</span>
+                        <h2>The forum was a meeting place in the cities of ancient Rome.</h2>
+                        <p>The Roman Forum, Was a site located at the center of ancient city of Rome and
+                        the location of important religious, political and social activities. Historians
+                        believe people first began publicly meeting in the open-air Forum around 500 B.C., 
+                        When the Roman Repiblic was founded.</p>
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='china') }}" alt="" class="image-clickable">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 10 Agust 2024</span>
+                        <h2>Today it is a tourist attraction and a symbol of China.</h2>
+                        <p>The Great Wall of China is the longest wall in the world and the longest
+                        man-made structure everdesigned or built in history. The Great Wall of China
+                        was built to serveas defense against enemy attack from nomadic tribes north
+                        of China. It also served to protect the trade route across China.</p>
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='stone') }}" alt="" class="image-clickable">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 25 September 2024</span>
+                        <h2>Fabulous site in smashing location. Right up to the standing stones.</h2>
+                        <p>A standing stone is a large stone, they are thought to have served a
+                        religious or ceremonial purpose, possibly as a symbol of territorial ownership
+                        or as a marker for astronomical events. The stones can appear as single stones,
+                        in lines, in stone circles, or in seemingly random groups.</p>
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='photo-1652897857714-be135c6d8a6b.avif') }}" alt="" class="image-clickable">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 30 September 2024</span>
+                        <h2> Tallest free-standing structure in the world.</h2>
+                        <p>The Burj Khalifa is the tallest building in the world and a global icon.
+                        It is an unprecedented example of international cooperation,a symbolic beacon
+                        of progress, and an emblem of the new, dynamic and prosperous Middle East.
+                        the conceptual heart and soul of the city of Dubai.</p>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+             <!-- Nature blog -->
+            <div id="nature">
+                <div class="titles">Nature</div>
+                <div class="blog-content">
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='nature 1') }}" alt="" class="clickable">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 20 January 2024</span>
+                        <h2>Environmentally concious at Fantasy of World.</h2>
+                        <p>It allows us to see and to be seen, with spectacular ascent. Take small
+                        but impactful steps towards environmental stewardship and sustainablity
+                        within the Fantasy of our world, Its lighting, its sparkling lights,
+                        and its beacon shine. contributing to a greener planet.</p>     
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='nature 2') }}" alt="" class="clickable">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 12 February 2024</span>
+                        <h2>It contains sea masterpieces, plus many other coastal gateway.</h2>
+                        <p>There's nothing quite like the coastal gateway. It's Fantasy in the world, and
+                        the most beautiful viewed location in a masterpiece for priceless location.
+                        Millions of tourists flock to the coastal gateway every year, many seeking a
+                        glimpse of the fantasy.</p>
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='nature 3') }}" alt="" class="clickable">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 12 March 2024</span>
+                        <h2>Environmental Fantasy of Outdoor Valley. </h2>
+                        <p>It Was a site located at the center of nature greener environment and
+                        the location of important religious and social activities. Historians
+                        believe people first began publicly meeting in the outdoor vally around 500 B.C., 
+                        When they was founded.</p>
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='nature 4') }}" alt="" class="clickable">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 20 May 2024</span>
+                        <h2>It contains marvelous, Waterfall coastal River.</h2>
+                        <p>It is the longest Waterfall in the world and the longest
+                        natural structure everdesigned or built in history. It was
+                        natural creation to enjoy our coastal river location. It also
+                        served to protect our natural sources.</p>
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='nature 5') }}" alt="" class="clickable">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 12 July 2024</span>
+                        <h2>Fabulous site in smashing location. In an river valley.</h2>
+                        <p>It Was a site located at the center of nature greener environment and
+                        the location of important civilization activities. Historians people to
+                        believe people first began publicly meeting in the mountain river valley
+                        around 200 B.C., When they was founded.</p>
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='nature 6') }}" alt="" class="clickable">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 05 Agust 2024</span>
+                        <h2>Photography of glimps location in the world.</h2>
+                        <p>I would like to dive into what composite photography is,
+                        since we are seeing it more often, with very few photographers
+                        being transparent or honest about using compositing techniques in
+                        their work. I truly believe it “traditional” photography</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+             <!-- Lifestyle blog -->
+            <div id="lifestyle">
+                <div class="titles">Lifestyle</div>
+                <div class="blog-content">
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='jared-rice-NTyBbu66_SI-unsplash.jpg') }}" alt="">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 20 January 2024</span>
+                        <h2>Achieve physical and mental peace and stability.</h2>
+                        <p>Yoga is designed to sharpen our minds and to improve our intelligence. Regular
+                        practice of yoga can help in controlling our emotions and promote well-being. It
+                        helps to develop self-discipline and self-awareness if practised regularly. It helps
+                        to strengthen our flexibility and posture.</p>     
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='play bake.avif') }}" alt="">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 10 March 2024</span>
+                        <h2>Boosts creativity and innovation to specific people and cultures.</h2>
+                        <p>Baking offers opportunities for children to enhance their fine and gross
+                        movements. One handed tools and equipment available at these activities,
+                        children can extend these skills in end of the day. Such as using cutlery
+                        for meal times or mark making activities.</p>
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='family.avif') }}" alt="">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 15 April 2024</span>
+                        <h2>The most important thing in the world is family and love.</h2>
+                        <p>Family is a group of people, related to each other. You can usually
+                        identify a family by a common family name or surname that every member attaches
+                        to their first name. I have a small family with five members. My family consists
+                        of my mother, father, baby sister and our pet dog.</p>
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='snowday.avif') }}" alt="">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 05 June 2024</span>
+                        <h2>Snowflakes are ice crystals falling through the sky, they fall gently.</h2>
+                        <p>The serene beauty of a snow-covered meadow at dawn.The invigorating
+                        feeling of cold air filling your lungs.The cosiness of a warm blanket on
+                        a frosty night.The joy of catching snowflakes on your tongue.The camaraderie
+                        of coming together to shovel snow.</p>
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='work.avif') }}" alt="">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 01 Agust 2024</span>
+                        <h2>Failure is not the opposite of success, it's part of success.</h2>
+                        <p>When used by educators, the term student work refers to all of the assignments,
+                        products, and projects that students complete to demonstrate what they have learned.
+                        Student work could include research among many other potential products.</p>
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='shopping style.avif') }}" alt="">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 05 Agust 2024</span>
+                        <h2>Seller provides to a buyer to offer goods or services at a stated price.</h2>
+                        <p>The buyers should not go from one shop to another for variety; at
+                        online shopping stores which is not possible in offline shopping to get
+                        at one place. The another main advantage of online shopping is that you
+                        do not need to go from one shop to another to buy various items.</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+             <!-- Space blog -->
+            <div id="space">
+                <div class="titles">Space</div>
+                <div class="blog-content" id="space">
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='space 1.avif') }}" alt="">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 20 January 2024</span>
+                        <h2>Astronauts command near future that travel back to the moon.</h2>
+                        <p> An astronaut is a special kind of scientist that takes a spaceship
+                        to outer space to study things like asteroids, the earth's atmosphere
+                        and the moon. Astronauts on the station conduct scientific experiments
+                        research on the human body and living in space.</p>     
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='space 2.avif') }}" alt="">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 02 April 2024</span>
+                        <h2>Revolution is like Saturn, it devours its own children.</h2>
+                        <p>Saturn is the sixth planet from the Sun and the second largest in
+                        the Solar System, after Jupiter. It is a gas giant, with an average radius
+                        of about nine and a half times that of Earth. It has an eighth the average
+                        density of Earth, but is over 95 times more massive.</p>
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='space 3.avif') }}" alt="">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 22 April 2024</span>
+                        <h2>105 Fascinating Universe Facts That will Blow Your Mind.</h2>
+                        <p>It's always fun to learn new thing about the universe because it's 
+                        so mysterious yet we keep discovering more. These Fascinating universe 
+                        facts will make you realize how we're all just a speck in the grand scheme of things.</p>
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='spa e 4.avif') }}" alt="">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 12 June 2024</span>
+                        <h2>Sun rays brings pure bliss. sun's rays set your soul on fire.</h2>
+                        <p>Although the Sun is a rather ordinary star, it is very important
+                        to the inhabitants of Earth. The Sun is the source of virtually all
+                        Earth's energy. It provides the heat and light that make life on Earth
+                        possible. Earth receives only about half a billionth of the energy that leaves the Sun.</p>
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='space 5.avif') }}" alt="">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 22 June 2024</span>
+                        <h2>Asteroids are small, rocky objects that orbit the sun.</h2>
+                        <p>Most asteroids travel around the sun in a loose path that falls
+                        between the orbits of the planets Mars and Jupiter. Astronomers
+                        identified the first asteroids in 1801. Asteroids are much smaller
+                        than planets.The largest asteroids are between 620 miles (1,000 kilometers) across.</p>
+                    </div>
+                </div>
+                <div class="blog-items">
+                    <div class="blog-img">
+                        <img src="{{ url_for('static',filename='space 6.avif') }}" alt="">
+                        <span><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                    <div class="blog-text">
+                        <span><i class="fa-solid fa-calendar-days"></i> 29 July 2024</span>
+                        <h2>The Moon is beautiful mind blowing, and the heart is loving.</h2>
+                        <p>The Moon is a large natural object that orbits, or travels around,
+                        Earth. After the Sun it is the brightest object in the sky. The average
+                        distance between the Moon and Earth is about 238,900 miles (384,400 kilometers).
+                        Compared to the distance between other planets and Earth is small.</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="container flex">
+        <div class="themeauthor container ">
+            <div class="social flex">
+                <div class="socialicon">
+                    <a href="https://en-gb.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F"><i class="fa-brands fa-square-facebook"></i></a>        
+                </div>
+                <div class="socialicon">
+                    <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>  
+                </div>
+                <div class="socialicon">
+                    <a href="https://www.google.com/"><i class="fa-brands fa-google"></i></a>
+                </div>
+                <div class="socialicon">
+                    <a href="https://www.linkedin.com/login"><i class="fa-brands fa-linkedin"></i></i></a>        
+                </div>
+                <div class="socialicon">
+                    <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="createdby">
+                <h4>&copy; 2024 Created by <a href="https://www.squarespace.com/" target="_blank"
+                 title="squqrespace">squarespace.com</a></h4>
+            </div>
+        </div>
+        
+    </footer>
+    <script>
+       document.addEventListener('DOMContentLoaded', () => {
+    const images = document.querySelectorAll('.image-clickable');
+    
+    images.forEach(image => {
+        image.addEventListener('click', (event) => {
+            const img = event.target;
+            const src = img.src;
+            const parent = img.closest('.blog-items'); // Ensure this selector correctly identifies the parent element
+            if (parent) {
+                const title = parent.querySelector('.blog-text h2') ? parent.querySelector('.blog-text h2').textContent : 'No Title';
+                const description = parent.querySelector('.blog-text p') ? parent.querySelector('.blog-text p').textContent : 'No Description';
+                
+                // Constructing the query string
+                const queryString = `img=${encodeURIComponent(src)}&title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
+                
+                console.log('Redirecting to:', `/post?${queryString}`); // Debug output
+
+                // Redirect to the new URL
+                window.location.href = `/post?${queryString}`;
+            } else {
+                console.error('Parent element with class .blog-items not found.');
+            }
+        });
+    });
+});
+
+        
+</script>
+
+
+   
+    
+</body>
+</html>
