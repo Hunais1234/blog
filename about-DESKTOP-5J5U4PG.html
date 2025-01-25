@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog website - About us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<style>
+    *{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    line-height: 1.5;
+    font-family: 'poppins', sans-serif;
+}
+body{
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("{{ url_for('static',filename='wallpaperflare.com_wallpaper (11).jpg') }}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.about-us{
+    width: 100%;
+}
+.about-us h1{
+    text-align: center;
+    font-size: 40px;
+    color: #2b9ec2;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 50px;
+}
+.about-us h1::after{
+    content: "";
+    height: 5px;
+    width: 200px;
+    background-color: #2b9ec2;
+    border-radius: 10px;
+    display: block;
+    margin: auto;
+}
+.wrapper{
+    padding: 0px 60px;
+    margin: 60px auto;
+}
+.content{
+    width: 60%;
+    float: left;
+    text-align: left;
+    padding: 0px 30px;
+}
+.content h3{
+    color: #1cc2e7;
+    letter-spacing: 1px;
+}
+.content p{
+    font-family: sans-serif;
+    font-size: 17px;
+    color: #fff;
+    margin-top: 20px;
+}
+.social{
+    width: 100%;
+    clear: both;
+    margin-top: 50px;
+    text-align: center;
+    display: inline-block;
+}
+.social a{
+    text-decoration: none;
+    color: aquamarine;
+    font-size: 25px;
+}
+.social i{
+    color: #fff;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    font-size: 22px;
+    text-align: center;
+    line-height: 45px;
+    background-color: #f28f92;
+    margin: 0px 5px;
+}
+.social i:hover{
+    color: #fff;
+    background-color: #88941e;
+    transition: 1s ease;
+    transform: rotate(360deg);
+}
+.image-section{
+    width: 40%;
+    float: right;
+    padding: 0px 30px;
+}
+.image-section img{
+    max-width: 100%;
+    height: auto;
+}
+@media screen and (max-width: 900px){
+    .about-us{
+        width: 100%;
+        padding-top: 20px;
+    }
+    .about-us h1{
+        font-size: 32px;
+    }
+    .content{
+        width: 100%;
+        float: none;
+    }
+    .content .social{
+        margin-top: 30px;
+        text-align: center;
+    }
+    .content .social a{
+        font-size: 21px;
+    }
+    .image-section{
+        float: none;
+        width: 100%;
+        margin-top: 25px;
+    }
+}
+</style>
+<body>
+    <section>
+        <div class="about-us">
+            <h1>ABOUT US</h1>
+            <div class="wrapper">
+                <div class="content">
+                    <h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic, et qui! Provident, 
+                    ipsum atque! Obcaecati :</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium placeat inventore
+                    praesentium id earum, libero porro iusto in cumque totam maxime error eius? Maiores 
+                    debitis cumque harum eum quisquam. Quae perferendis molestias neque illo ducimus eligendi. 
+                    est fugit. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, qui molestiae 
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis placeat eligendi minus similique 
+                    aperiam deleniti assumenda repudiandae corrupti laborum. Voluptas.ducimus quae vero maxime ipsum. 
+                    Ab, blanditiis dolores. Rerum. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, 
+                    ipsa sint facilis quia suscipit ex.</p>
+                </div>
+                <div class="image-section">
+                    <img src="{{ url_for('static',filename='pexels-olly-926390.jpg') }}">
+                </div>
+                <div class="social">
+                    <a href="https://en-gb.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></i></a>
+                    <a href="https://www.linkedin.com/login"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
